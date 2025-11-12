@@ -8,13 +8,11 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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"
+    OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 )
 
 load_dotenv()
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-
 
 
 bot = Bot(token=TELEGRAM_TOKEN)
@@ -40,4 +38,5 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+
     asyncio.run(main())
